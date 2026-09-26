@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Class 10th Farewell Party 2026 | Good Friends • Good Times • Forever Together</title>
+  
+  <!-- Google Fonts: Cinzel, Playfair Display & Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Permanent+Marker&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            luxury: {
+              black: '#070709',
+              card: '#101116',
+              surface: '#161720',
+              border: '#2A271B',
+              goldLight: '#FFE38A',
+              gold: '#E5B842',
+              goldDark: '#997316',
+              champagne: '#FCEFD8',
+              muted: '#8A8C98'
+            }
+          },
+          fontFamily: {
+            cinzel: ['Cinzel', 'serif'],
+            playfair: ['Playfair Display', 'serif'],
+            sans: ['Montserrat', 'sans-serif'],
+            marker: ['Permanent Marker', 'cursive'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #070709;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #463816;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #e5b842;
+    }
+
+    /* Shimmering Gold Text & Glows */
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #FFF0A3 0%, #E5B842 50%, #B8801A 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .gold-gradient-bg {
+      background: linear-gradient(135deg, #FFE38A 0%, #E5B842 50%, #A67512 100%);
+    }
+    .poster-glow {
+      box-shadow: 0 0 45px rgba(229, 184, 66, 0.22);
+    }
+    .poster-glow:hover {
+      box-shadow: 0 0 65px rgba(229, 184, 66, 0.38);
+    }
+    .gold-glow {
+      box-shadow: 0 0 25px rgba(229, 184, 66, 0.25);
+    }
+    .gold-glow-hover:hover {
+      box-shadow: 0 0 35px rgba(229, 184, 66, 0.45);
+    }
+
+    /* Glassmorphism */
+    .glass-card {
+      background: rgba(16, 17, 22, 0.85);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(229, 184, 66, 0.25);
+    }
+    
+    /* Interactive Card Selectors */
+    .radio-card input:checked + label {
+      border-color: #E5B842;
+      background: rgba(229, 184, 66, 0.14);
+      box-shadow: 0 0 20px rgba(229, 184, 66, 0.32);
+      transform: translateY(-2px);
+    }
+
+    /* Canvas Bokeh Particles */
+    #goldCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      #passContainer, #passContainer * {
+        visibility: visible;
+      }
+      #passContainer {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body class="bg-luxury-black text-gray-200 font-sans antialiased min-h-screen selection:bg-amber-400 selection:text-black relative pb-20 overflow-x-hidden">
+
+  <!-- Ambient Gold Bokeh Canvas -->
+  <canvas id="goldCanvas"></canvas>
+
+  <!-- Top Navigation Bar -->
+  <header class="relative z-30 w-full border-b border-luxury-border/80 bg-luxury-black/90 backdrop-blur-md sticky top-0 px-4 py-3 sm:px-8">
+    <div class="max-w-5xl mx-auto flex items-center justify-between">
+      <div class="flex items-center space-x-3 cursor-pointer" onclick="resetToSubmitNew()">
+        <div class="w-8 h-8 rounded-full gold-gradient-bg flex items-center justify-center text-luxury-black font-extrabold shadow-md">
+          <i class="fa-solid fa-crown text-xs"></i>
+        </div>
+        <div>
+          <span class="font-cinzel tracking-widest text-[10px] uppercase text-amber-200/80 font-bold block leading-none">Class 10th</span>
+          <span class="font-cinzel text-sm sm:text-base font-extrabold gold-gradient-text tracking-wider">FAREWELL PARTY 2026</span>
+        </div>
+      </div>
+
+      <!-- Action Utilities -->
+      <div class="flex items-center space-x-2">
+        <button onclick="openPosterModal()" class="text-xs px-3 py-1.5 rounded-full border border-luxury-border text-luxury-champagne hover:border-luxury-gold hover:text-white transition flex items-center gap-1.5" title="Expand Full Poster">
+          <i class="fa-solid fa-expand text-[11px] text-luxury-gold"></i>
+          <span class="hidden sm:inline">View Poster</span>
+        </button>
+        <button onclick="toggleAdminView()" class="text-xs px-3.5 py-1.5 rounded-full bg-luxury-surface border border-luxury-gold/50 text-luxury-gold hover:bg-luxury-gold hover:text-black font-medium transition duration-200 flex items-center gap-1.5 shadow-sm">
+          <i class="fa-solid fa-lock text-xs"></i>
+          <span>Admin</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative z-20 max-w-4xl mx-auto px-4 pt-4 sm:pt-6">
+
+    <!-- HERO POSTER BANNER CONTAINER -->
+    <section class="relative rounded-2xl sm:rounded-3xl overflow-hidden border-2 border-luxury-gold/50 shadow-2xl mb-8 group bg-luxury-card poster-glow transition-all duration-300">
+      
+      <!-- Poster Banner Image with Direct Click-to-Zoom Lightbox -->
+      <div class="relative w-full overflow-hidden cursor-pointer" onclick="openPosterModal()">
+        <img id="farewellPosterImg" 
+             src="image_979a5a.png" 
+             alt="Class 10th Farewell Party 2026 Poster - Good Friends • Good Times • Forever Together" 
+             class="w-full h-auto object-cover object-center transition duration-700 group-hover:scale-[1.015] filter brightness-[0.98] select-none">
+        
+        <!-- Subtle Interactive Hover Vignette Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-t from-luxury-black/90 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300"></div>
+
+        <!-- Floating Badge for Poster Zoom -->
+        <div class="absolute top-3 right-3 sm:top-4 sm:right-4 z-10 bg-black/75 hover:bg-black text-amber-200 text-xs px-3 py-1.5 rounded-full border border-luxury-gold/50 flex items-center gap-1.5 backdrop-blur-md transition shadow-lg">
+          <i class="fa-solid fa-magnifying-glass-plus text-luxury-gold"></i>
+          <span class="font-medium">Tap to Enlarge</span>
+        </div>
+
+        <!-- Bottom Banner Ribbon mirroring the poster message -->
+        <div class="absolute bottom-3 left-4 right-4 sm:bottom-4 sm:left-6 sm:right-6 flex flex-wrap items-center justify-between gap-2 pointer-events-none">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/80 border border-luxury-gold/60 backdrop-blur-md">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span class="text-[11px] font-semibold tracking-wider uppercase text-amber-200">Official Batch RSVP Portal</span>
+          </div>
+          <span class="hidden sm:inline-block font-marker text-xs text-luxury-champagne drop-shadow">
+            Good Friends • Good Times • Forever Together ♥
+          </span>
+        </div>
+      </div>
+
+      <!-- Quick Announcement Strip under the poster -->
+      <div class="bg-gradient-to-r from-[#14151e] via-[#201c10] to-[#14151e] border-t border-luxury-gold/30 px-4 py-3 flex flex-wrap items-center justify-around gap-3 text-xs text-gray-300">
+        <div class="flex items-center gap-2">
+          <i class="fa-regular fa-calendar-check text-luxury-gold text-sm"></i>
+          <span><strong>Date:</strong> Voting Below</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-location-dot text-luxury-gold text-sm"></i>
+          <span><strong>Venue:</strong> To Be Announced</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <i class="fa-regular fa-clock text-luxury-gold text-sm"></i>
+          <span><strong>Time:</strong> Details Soon</span>
+        </div>
+      </div>
+    </section>
+
+    <div id="registrationView" class="transition-all duration-300">
+      <div class="glass-card rounded-2xl sm:rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden">
+        
+        <!-- Golden Top Border Glow Accent -->
+        <div class="absolute top-0 left-0 right-0 h-1 gold-gradient-bg"></div>
+
+        <div class="text-center mb-7">
+          <span class="text-xs uppercase tracking-widest text-luxury-gold font-bold">Class of 2026 Headcount</span>
+          <h2 class="text-2xl sm:text-3xl font-cinzel font-black text-white mt-1">Reserve Your Farewell Spot</h2>
+          <p class="text-xs sm:text-sm text-gray-400 mt-1 max-w-md mx-auto">
+            Takes under 30 seconds! Vote for the month & help the committee finalize the date, theme and mementos.
+          </p>
+        </div>
+
+        <form id="farewellForm" onsubmit="handleFormSubmit(event)" class="space-y-6">
+
+          <!-- Full Name -->
+          <div>
+            <label for="studentName" class="block text-xs font-semibold uppercase tracking-wider text-luxury-champagne mb-1.5">
+              Full Name <span class="text-red-400">*</span>
+            </label>
+            <div class="relative">
+              <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-luxury-gold">
+                <i class="fa-regular fa-user"></i>
+              </span>
+              <input type="text" id="studentName" required placeholder="e.g. Chanchal Rajput"
+                class="w-full pl-10 pr-4 py-3 rounded-xl bg-luxury-surface border border-luxury-border focus:border-luxury-gold focus:outline-none focus:ring-1 focus:ring-luxury-gold text-white text-sm transition placeholder-gray-500">
+            </div>
+          </div>
+
+          <!-- Section & WhatsApp / Phone -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="studentSection" class="block text-xs font-semibold uppercase tracking-wider text-luxury-champagne mb-1.5">
+                Class 10 Section / Roll No (Optional)
+              </label>
+              <div class="relative">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-luxury-gold">
+                  <i class="fa-solid fa-graduation-cap"></i>
+                </span>
+                <input type="text" id="studentSection" placeholder="e.g. 10-A / Roll 24"
+                  class="w-full pl-10 pr-4 py-3 rounded-xl bg-luxury-surface border border-luxury-border focus:border-luxury-gold focus:outline-none focus:ring-1 focus:ring-luxury-gold text-white text-sm transition placeholder-gray-500">
+              </div>
+            </div>
+
+            <div>
+              <label for="contactNumber" class="block text-xs font-semibold uppercase tracking-wider text-luxury-champagne mb-1.5">
+                WhatsApp / Phone (Optional)
+              </label>
+              <div class="relative">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-luxury-gold">
+                  <i class="fa-brands fa-whatsapp"></i>
+                </span>
+                <input type="tel" id="contactNumber" placeholder="For venue & ticket updates"
+                  class="w-full pl-10 pr-4 py-3 rounded-xl bg-luxury-surface border border-luxury-border focus:border-luxury-gold focus:outline-none focus:ring-1 focus:ring-luxury-gold text-white text-sm transition placeholder-gray-500">
+              </div>
+            </div>
+          </div>
+
+          <!-- ATTENDING DECISION (INTERACTIVE CARDS) -->
+          <div>
+            <label class="block text-xs font-semibold uppercase tracking-wider text-luxury-champagne mb-2">
+              Will you be attending the Farewell Party? <span class="text-red-400">*</span>
+            </label>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              
+              <!-- Yes -->
+              <div class="radio-card">
+                <input type="radio" name="attendance" id="attendYes" value="Yes" class="hidden" checked required>
+                <label for="attendYes" class="flex flex-col items-center justify-center p-3.5 rounded-xl border border-luxury-border bg-luxury-surface cursor-pointer text-center transition duration-200 hover:border-luxury-gold">
+                  <span class="text-2xl mb-1">🎉</span>
+                  <span class="font-bold text-sm text-white">Definitely Yes!</span>
+                  <span class="text-[11px] text-emerald-400 mt-0.5">I'll be there</span>
+                </label>
+              </div>
+
+              <!-- Maybe -->
+              <div class="radio-card">
+                <input type="radio" name="attendance" id="attendMaybe" value="Maybe" class="hidden">
+                <label for="attendMaybe" class="flex flex-col items-center justify-center p-3.5 rounded-xl border border-luxury-border bg-luxury-surface cursor-pointer text-center transition duration-200 hover:border-luxury-gold">
+                  <span class="text-2xl mb-1">🤔</span>
+                  <span class="font-bold text-sm text-white">Maybe</span>
+                  <span class="text-[11px] text-amber-300 mt-0.5">Still deciding</span>
+                </label>
+              </div>
+
+              <!-- No -->
+              <div class="radio-card">
+                <input type="radio" name="attendance" id="attendNo" value="No" class="hidden">
+                <label for="attendNo" class="flex flex-col items-center justify-center p-3.5 rounded-xl border border-luxury-border bg-luxury-surface cursor-pointer text-center transition duration-200 hover:border-luxury-gold">
+                  <span class="text-2xl mb-1">😢</span>
+                  <span class="font-bold text-sm text-white">Can't Make It</span>
+                  <span class="text-[11px] text-rose-400 mt-0.5">Will miss you all</span>
+                </label>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- PREFERRED MONTH SELECTION -->
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <label class="block text-xs font-semibold uppercase tracking-wider text-luxury-champagne">
+                Vote Preferred Month for Farewell <span class="text-red-400">*</span>
+              </label>
+              <span class="text-[11px] text-luxury-gold italic">Shapes final date</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div class="radio-card">
+                <input type="radio" name="preferredMonth" id="monthDec" value="December 2026" class="hidden" checked required>
+                <label for="monthDec" class="flex items-center justify-center gap-2 p-3 rounded-xl border border-luxury-border bg-luxury-surface cursor-pointer text-sm font-medium transition text-gray-200 hover:border-luxury-gold">
+                  <i class="fa-regular fa-snowflake text-amber-300"></i>
+                  <span>December 2026</span>
+                </label>
+              </div>
+
+              <div class="radio-card">
+                <input type="radio" name="preferredMonth" id="monthJan" value="January 2027" class="hidden">
+                <label for="monthJan" class="flex items-center justify-center gap-2 p-3 rounded-xl border border-luxury-border bg-luxury-surface cursor-pointer text-sm font-medium transition text-gray-200 hover:border-luxury-gold">
+                  <i class="fa-solid fa-champagne-glasses text-luxury-gold"></i>
+                  <span>January 2027</span>
+                </label>
+              </div>
+
+              <div class="radio-card">
+                <input type="radio" name="preferredMonth" id="monthFeb" value="February 2027" class="hidden">
+                <label for="monthFeb" class="flex items-center justify-center gap-2 p-3 rounded-xl border border-luxury-border bg-luxury-surface cursor-pointer text-sm font-medium transition text-gray-200 hover:border-luxury-gold">
+                  <i class="fa-solid fa-music text-purple-400"></i>
+                  <span>February 2027</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- SUGGESTIONS / SONG REQUESTS / MEMORIES -->
+          <div>
+            <label for="suggestions" class="block text-xs font-semibold uppercase tracking-wider text-luxury-champagne mb-1.5">
+              Farewell Wishes, Song Requests, or Message for Batch 2026 (Optional)
+            </label>
+            <textarea id="suggestions" rows="2" placeholder="Drop your favorite song for DJ, a teacher imitation idea, or a memory..."
+              class="w-full px-4 py-3 rounded-xl bg-luxury-surface border border-luxury-border focus:border-luxury-gold focus:outline-none focus:ring-1 focus:ring-luxury-gold text-white text-sm transition resize-none placeholder-gray-500"></textarea>
+          </div>
+
+          <!-- SUBMISSION BUTTON -->
+          <div class="pt-2">
+            <button type="submit" id="submitBtn" class="w-full py-4 px-6 rounded-xl gold-gradient-bg text-black font-cinzel font-black text-sm sm:text-base tracking-wider uppercase transition duration-300 transform active:scale-95 shadow-xl gold-glow gold-glow-hover flex items-center justify-center gap-2 cursor-pointer">
+              <span id="btnText">Confirm My Farewell RSVP</span>
+              <i id="btnIcon" class="fa-solid fa-arrow-right"></i>
+              <div id="btnSpinner" class="hidden animate-spin rounded-full h-5 w-5 border-2 border-black border-t-transparent"></div>
+            </button>
+            <p class="text-center text-[11px] text-gray-400 mt-2.5">
+              <i class="fa-solid fa-lock text-amber-400/80 mr-1"></i> Responses automatically saved with exact date & time.
+            </p>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+    <div id="thankYouView" class="hidden transition-all duration-300">
+      <div class="glass-card rounded-2xl sm:rounded-3xl p-6 sm:p-10 shadow-2xl text-center border-luxury-gold/60 relative overflow-hidden">
+        
+        <!-- Animated Success Badge -->
+        <div class="w-16 h-16 rounded-full gold-gradient-bg mx-auto flex items-center justify-center text-luxury-black text-2xl shadow-xl gold-glow mb-4">
+          <i class="fa-solid fa-check font-black"></i>
+        </div>
+
+        <h2 class="text-2xl sm:text-3xl font-cinzel font-extrabold gold-gradient-text">RSVP Recorded!</h2>
+        <p class="text-sm text-gray-300 mt-1 max-w-md mx-auto">
+          Thank you, <span id="confStudentName" class="font-bold text-white"></span>! Your response for Class 10th Farewell Party 2026 has been successfully confirmed.
+        </p>
+
+        <!-- Golden VIP Farewell Pass Container (Printable/Saveable) -->
+        <div id="passContainer" class="my-6 max-w-md mx-auto rounded-2xl bg-gradient-to-br from-[#1b1c24] via-[#101117] to-[#1e1c12] border-2 border-luxury-gold/70 p-6 text-left relative overflow-hidden shadow-2xl">
+          <div class="absolute -right-8 -top-8 w-32 h-32 bg-luxury-gold/15 rounded-full blur-2xl pointer-events-none"></div>
+
+          <div class="flex justify-between items-start border-b border-luxury-border/80 pb-3">
+            <div>
+              <span class="text-[10px] tracking-widest uppercase font-mono text-luxury-gold font-bold">VIP Batch Pass</span>
+              <h3 class="text-base font-cinzel font-black text-white">CLASS 10 FAREWELL 2026</h3>
+              <p class="text-[10px] text-gray-400 font-marker">Good Friends • Good Times • Forever Together</p>
+            </div>
+            <div class="text-right">
+              <span class="text-[10px] text-gray-400 block font-mono">PASS TOKEN</span>
+              <span id="ticketToken" class="text-xs font-mono font-bold text-amber-300">#FW26-0000</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4 my-4 text-xs">
+            <div>
+              <span class="text-gray-400 block text-[10px] uppercase">Attendee</span>
+              <span id="ticketName" class="font-semibold text-white text-sm block truncate">-</span>
+              <span id="ticketSection" class="text-gray-400 text-[11px] block">-</span>
+            </div>
+            <div>
+              <span class="text-gray-400 block text-[10px] uppercase">Status & Vote</span>
+              <span id="ticketStatus" class="font-bold text-emerald-400 block">-</span>
+              <span id="ticketMonth" class="text-luxury-champagne text-[11px] block">-</span>
+            </div>
+          </div>
+
+          <div class="pt-3 border-t border-dashed border-luxury-border/80 flex justify-between items-center text-[10px] text-gray-400">
+            <span>Keep this token for party registration</span>
+            <span id="ticketTimestamp" class="font-mono text-gray-500"></span>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-wrap items-center justify-center gap-3">
+          <button onclick="window.print()" class="px-5 py-2.5 rounded-xl bg-luxury-surface border border-luxury-gold/50 text-white text-xs sm:text-sm font-semibold hover:border-luxury-gold transition flex items-center gap-2">
+            <i class="fa-solid fa-download text-luxury-gold"></i>
+            <span>Save / Print Pass</span>
+          </button>
+
+          <button onclick="resetToSubmitNew()" class="px-5 py-2.5 rounded-xl border border-luxury-border text-gray-400 hover:text-white text-xs sm:text-sm font-medium transition">
+            Submit Another RSVP
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <div id="adminView" class="hidden transition-all duration-300">
+      <div class="glass-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-2xl relative">
+        
+        <!-- Admin Header -->
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-6 border-b border-luxury-border gap-4">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="px-2.5 py-0.5 rounded bg-amber-400/20 text-amber-300 text-[11px] font-mono font-bold uppercase tracking-wider">Executive Committee</span>
+              <span class="text-xs text-gray-400">Class 10th Farewell 2026</span>
+            </div>
+            <h2 class="text-xl sm:text-2xl font-cinzel font-bold text-white mt-1">RSVP Control Center & Analytics</h2>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-2">
+            <button onclick="openIntegrationModal()" class="px-3.5 py-1.5 rounded-lg bg-emerald-950/40 border border-emerald-500/40 text-emerald-300 text-xs font-medium hover:bg-emerald-900/50 transition flex items-center gap-1.5" title="Google Sheets Setup">
+              <i class="fa-solid fa-sheet-plastic text-emerald-400"></i>
+              <span>Google Sheets Sync</span>
+            </button>
+            <button onclick="exportToCSV()" class="px-3.5 py-1.5 rounded-lg bg-luxury-surface border border-luxury-gold/40 text-luxury-gold hover:bg-luxury-gold hover:text-black text-xs font-medium transition flex items-center gap-1.5">
+              <i class="fa-solid fa-file-csv"></i>
+              <span>Export CSV</span>
+            </button>
+            <button onclick="toggleAdminView()" class="px-3 py-1.5 rounded-lg bg-luxury-surface border border-luxury-border text-gray-300 hover:text-white text-xs transition">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Metric Stat Cards -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 my-6">
+          <div class="p-4 rounded-xl bg-luxury-surface/90 border border-luxury-border">
+            <span class="text-[11px] font-medium text-gray-400 uppercase tracking-wider block">Total Submissions</span>
+            <div id="statTotal" class="text-2xl sm:text-3xl font-extrabold text-white mt-1">0</div>
+            <span class="text-[10px] text-gray-500">Live responses</span>
+          </div>
+
+          <div class="p-4 rounded-xl bg-luxury-surface/90 border border-luxury-border">
+            <span class="text-[11px] font-medium text-emerald-400 uppercase tracking-wider block">Definitely Coming</span>
+            <div id="statYes" class="text-2xl sm:text-3xl font-extrabold text-emerald-400 mt-1">0</div>
+            <span id="statYesPct" class="text-[10px] text-gray-400">0% of total</span>
+          </div>
+
+          <div class="p-4 rounded-xl bg-luxury-surface/90 border border-luxury-border">
+            <span class="text-[11px] font-medium text-amber-300 uppercase tracking-wider block">Tentative / Maybe</span>
+            <div id="statMaybe" class="text-2xl sm:text-3xl font-extrabold text-amber-300 mt-1">0</div>
+            <span id="statMaybePct" class="text-[10px] text-gray-400">0% of total</span>
+          </div>
+
+          <div class="p-4 rounded-xl bg-luxury-surface/90 border border-luxury-border">
+            <span class="text-[11px] font-medium text-rose-400 uppercase tracking-wider block">Can't Make It</span>
+            <div id="statNo" class="text-2xl sm:text-3xl font-extrabold text-rose-400 mt-1">0</div>
+            <span id="statNoPct" class="text-[10px] text-gray-400">0% of total</span>
+          </div>
+        </div>
+
+        <!-- Month Voting Breakdown Chart -->
+        <div class="p-5 rounded-xl bg-luxury-surface border border-luxury-border mb-6">
+          <h3 class="text-xs uppercase tracking-wider font-semibold text-luxury-champagne mb-3 flex items-center justify-between">
+            <span>Preferred Month Poll Results</span>
+            <span class="text-[11px] text-gray-400 font-normal">Real-time student votes</span>
+          </h3>
+          
+          <div class="space-y-3" id="monthVoteBars">
+            <!-- Rendered dynamically -->
+          </div>
+        </div>
+
+        <!-- Search & Student Submissions Table -->
+        <div>
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 mb-3">
+            <h3 class="text-xs uppercase tracking-wider font-semibold text-white">Student Response Ledger</h3>
+            <div class="relative w-full sm:w-64">
+              <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gray-500">
+                <i class="fa-solid fa-magnifying-glass text-xs"></i>
+              </span>
+              <input type="text" id="adminSearchInput" oninput="filterTable()" placeholder="Search student, section..."
+                class="w-full pl-8 pr-3 py-1.5 rounded-lg bg-luxury-black border border-luxury-border text-xs text-white focus:outline-none focus:border-luxury-gold">
+            </div>
+          </div>
+
+          <div class="overflow-x-auto rounded-xl border border-luxury-border bg-luxury-black/60 max-h-96">
+            <table class="w-full text-left text-xs whitespace-nowrap">
+              <thead class="bg-luxury-surface/90 text-gray-400 text-[11px] uppercase tracking-wider sticky top-0 border-b border-luxury-border">
+                <tr>
+                  <th class="py-3 px-3">Date & Time</th>
+                  <th class="py-3 px-3">Student Name</th>
+                  <th class="py-3 px-3">Section</th>
+                  <th class="py-3 px-3">Phone</th>
+                  <th class="py-3 px-3">Status</th>
+                  <th class="py-3 px-3">Preferred Month</th>
+                  <th class="py-3 px-3">Song / Wishes</th>
+                  <th class="py-3 px-3 text-right">Action</th>
+                </tr>
+              </thead>
+              <tbody id="responseTableBody" class="divide-y divide-luxury-border/50 text-gray-200">
+                <!-- Dynamically populated rows -->
+              </tbody>
+            </table>
+          </div>
+          
+          <div class="flex items-center justify-between mt-3 text-[11px] text-gray-400">
+            <span id="tableRecordCount">Showing 0 entries</span>
+            <button onclick="clearAllDataPrompt()" class="text-rose-400 hover:text-rose-300 underline">Reset demo test data</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <div id="posterModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-lg p-4 hidden" onclick="closePosterModal(event)">
+    <div class="relative max-w-4xl max-h-[95vh] w-full flex flex-col items-center">
+      <button onclick="closePosterModal(event)" class="absolute -top-10 right-0 text-white hover:text-luxury-gold text-2xl font-bold cursor-pointer">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <img src="image_979a5a.png" alt="Class 10th Farewell Party 2026 Poster" class="max-h-[85vh] w-auto rounded-xl border-2 border-luxury-gold shadow-2xl object-contain">
+      <p class="text-xs text-luxury-champagne mt-3 font-marker tracking-wide text-center">Class 10th Farewell Party 2026 • Forever Together ♥</p>
+    </div>
+  </div>
+
+  <!-- PASSWORD MODAL FOR ADMIN ACCESS - STRICT ACCESS -->
+  <div id="passwordModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md p-4 hidden">
+    <div class="glass-card max-w-sm w-full p-6 rounded-2xl border-luxury-gold/50 shadow-2xl relative text-center">
+      <div class="w-12 h-12 rounded-full gold-gradient-bg mx-auto flex items-center justify-center text-luxury-black text-lg mb-3">
+        <i class="fa-solid fa-shield-halved"></i>
+      </div>
+      <h3 class="font-cinzel text-lg font-bold text-white">Farewell Admin Portal</h3>
+      <p class="text-xs text-gray-400 mt-1 mb-4">Enter committee passkey to inspect responses & settings.</p>
+
+      <form onsubmit="verifyAdminPassword(event)" class="space-y-3">
+        <div class="relative">
+          <input type="password" id="adminPasswordInput" placeholder="Enter administrator passcode" required autocomplete="off"
+            class="w-full px-4 py-2.5 rounded-xl bg-luxury-surface border border-luxury-border focus:border-luxury-gold focus:outline-none text-white text-center tracking-widest text-sm">
+        </div>
+        <p id="passwordError" class="text-rose-400 text-xs hidden">Invalid passcode. Please try again.</p>
+
+        <div class="flex gap-2 pt-2">
+          <button type="button" onclick="closePasswordModal()" class="w-1/2 py-2 rounded-xl border border-luxury-border text-gray-300 text-xs hover:bg-luxury-surface transition">
+            Cancel
+          </button>
+          <button type="submit" class="w-1/2 py-2 rounded-xl gold-gradient-bg text-black font-semibold text-xs hover:opacity-95 transition cursor-pointer">
+            Unlock
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- GOOGLE SHEETS SETUP & APPS SCRIPT DRAWER MODAL -->
+  <div id="integrationModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md p-4 hidden">
+    <div class="glass-card max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 rounded-2xl border-luxury-gold/60 shadow-2xl relative text-left">
+      
+      <div class="flex items-center justify-between pb-4 border-b border-luxury-border">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-cloud-arrow-up text-luxury-gold text-lg"></i>
+          <h3 class="font-cinzel text-lg font-bold text-white">Google Sheets Integration Setup</h3>
+        </div>
+        <button onclick="closeIntegrationModal()" class="text-gray-400 hover:text-white text-lg">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="space-y-4 my-4 text-xs text-gray-300">
+        <p>Connect this portal directly to your Google Sheet using Google Apps Script so all student submissions automatically append to your spreadsheet in real time with exact timestamps.</p>
+        
+        <!-- Live Endpoint Configuration -->
+        <div class="p-3.5 rounded-xl bg-luxury-surface border border-luxury-gold/40">
+          <label class="block text-[11px] uppercase font-bold text-luxury-champagne mb-1">
+            Google Apps Script Web App URL:
+          </label>
+          <div class="flex gap-2">
+            <input type="url" id="customScriptUrl" placeholder="https://script.google.com/macros/s/.../exec"
+              class="flex-1 px-3 py-2 rounded-lg bg-luxury-black border border-luxury-border text-white text-xs focus:outline-none focus:border-luxury-gold">
+            <button onclick="saveAppsScriptUrl()" class="px-4 py-2 rounded-lg gold-gradient-bg text-black font-bold text-xs whitespace-nowrap cursor-pointer">
+              Save URL
+            </button>
+          </div>
+          <span id="endpointStatusText" class="text-[10px] text-gray-400 mt-1 block">Local storage backup is active. When configured, submissions sync directly to Google Sheets.</span>
+        </div>
+
+        <div class="border-t border-luxury-border pt-3">
+          <h4 class="font-bold text-luxury-goldLight text-sm mb-1">3-Minute Setup Instructions:</h4>
+          <ol class="list-decimal pl-4 space-y-1.5 text-gray-300">
+            <li>Create a new Google Sheet named <span class="text-white font-semibold">"Class 10 Farewell 2026"</span>.</li>
+            <li>In the top menu, click <span class="text-amber-200">Extensions &gt; Apps Script</span>.</li>
+            <li>Delete all code in the script editor, paste the script below, and click Save.</li>
+            <li>Click <span class="text-amber-200">Deploy &gt; New deployment</span> &gt; Select type <span class="text-amber-200">Web app</span>.</li>
+            <li>Set <em>Execute as</em>: <strong>Me</strong> and <em>Who has access</em>: <strong>Anyone</strong>.</li>
+            <li>Click Deploy, copy the Web App URL, and paste it into the field above!</li>
+          </ol>
+        </div>
+
+        <!-- Script Snippet Box -->
+        <div>
+          <div class="flex justify-between items-center mb-1">
+            <span class="text-[10px] text-gray-400 font-mono">Google Apps Script (Code.gs):</span>
+            <button onclick="copyAppsScriptCode()" class="text-[11px] text-luxury-gold hover:underline flex items-center gap-1 cursor-pointer">
+              <i class="fa-regular fa-copy"></i> Copy Script
+            </button>
+          </div>
+          <pre id="appsScriptCode" class="p-3 rounded-lg bg-black text-[11px] font-mono text-emerald-300 border border-gray-800 overflow-x-auto select-all leading-relaxed max-h-48">
+function doPost(e) {
+  try {
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    
+    // Add header row automatically if empty
+    if (sheet.getLastRow() === 0) {
+      sheet.appendRow([
+        "Timestamp",
+        "Student Name",
+        "Section",
+        "Phone / WhatsApp",
+        "Attending Decision",
+        "Preferred Month",
+        "Farewell Wishes / Requests",
+        "Pass Token"
+      ]);
+      sheet.getRange(1, 1, 1, 8).setFontWeight("bold").setBackground("#D4AF37");
+    }
+    
+    var data = JSON.parse(e.postData.contents);
+    sheet.appendRow([
+      data.timestamp || new Date().toLocaleString(),
+      data.name,
+      data.section || "N/A",
+      data.phone || "N/A",
+      data.attending,
+      data.month,
+      data.suggestions || "None",
+      data.token || ""
+    ]);
+    
+    return ContentService.createTextOutput(JSON.stringify({
+      status: "success",
+      message: "RSVP recorded successfully"
+    })).setMimeType(ContentService.MimeType.JSON);
+    
+  } catch (error) {
+    return ContentService.createTextOutput(JSON.stringify({
+      status: "error",
+      message: error.toString()
+    })).setMimeType(ContentService.MimeType.JSON);
+  }
+}
+          </pre>
+        </div>
+      </div>
+
+      <div class="text-right">
+        <button onclick="closeIntegrationModal()" class="px-4 py-2 rounded-lg bg-luxury-surface border border-luxury-border text-white text-xs cursor-pointer">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLOATING TOAST NOTIFICATION -->
+  <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-luxury-card border border-luxury-gold/60 text-white text-xs px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2.5 max-w-sm pointer-events-none">
+    <i id="toastIcon" class="fa-solid fa-circle-check text-luxury-gold"></i>
+    <span id="toastMsg">Operation successful</span>
+  </div>
+
+  <script>
+    const STORAGE_KEY_RESPONSES = 'farewell_responses_2026';
+    const STORAGE_KEY_APPS_SCRIPT_URL = 'farewell_apps_script_url';
+    const SECURE_ADMIN_HASH = 'Y2tzaW5naDIzMjM='; // Base64 representation of designated passcode
+
+    let responses = [];
+    let isAdminUnlocked = false;
+
+    window.onload = function() {
+      initAmbientCanvas();
+      loadSavedResponses();
+      loadSavedScriptUrl();
+    };
+
+    function loadSavedResponses() {
+      const stored = localStorage.getItem(STORAGE_KEY_RESPONSES);
+      if (stored) {
+        try {
+          responses = JSON.parse(stored);
+        } catch(e) {
+          responses = [];
+        }
+      } else {
+        responses = [
+          {
+            token: 'FW26-1042',
+            timestamp: '9/26/2026, 11:20:15 AM',
+            name: 'Aarav Patel',
+            section: '10-A',
+            phone: '+91 98765 43210',
+            attending: 'Yes',
+            month: 'January 2027',
+            suggestions: 'Please play 90s bollywood classics and retro mashups!'
+          },
+          {
+            token: 'FW26-1043',
+            timestamp: '9/26/2026, 1:45:10 PM',
+            name: 'Diya Sen',
+            section: '10-B',
+            phone: '+91 98123 45678',
+            attending: 'Yes',
+            month: 'December 2026',
+            suggestions: 'Can we have a photo booth with Polaroid souvenirs?'
+          },
+          {
+            token: 'FW26-1044',
+            timestamp: '9/26/2026, 2:10:04 PM',
+            name: 'Karan Mehra',
+            section: '10-A',
+            phone: '+91 97654 32109',
+            attending: 'Maybe',
+            month: 'February 2027',
+            suggestions: 'Depends on the pre-board exam schedules.'
+          }
+        ];
+        saveResponsesToStorage();
+      }
+      renderAdminDashboard();
+    }
+
+    function saveResponsesToStorage() {
+      localStorage.setItem(STORAGE_KEY_RESPONSES, JSON.stringify(responses));
+    }
+
+    function loadSavedScriptUrl() {
+      const savedUrl = localStorage.getItem(STORAGE_KEY_APPS_SCRIPT_URL);
+      if (savedUrl) {
+        const input = document.getElementById('customScriptUrl');
+        if (input) input.value = savedUrl;
+        document.getElementById('endpointStatusText').innerHTML = `<span class="text-emerald-400 font-semibold">● Active Webhook:</span> Submissions will auto-forward to your Google Sheet.`;
+      }
+    }
+
+    function saveAppsScriptUrl() {
+      const input = document.getElementById('customScriptUrl');
+      const url = input.value.trim();
+      if (!url) {
+        localStorage.removeItem(STORAGE_KEY_APPS_SCRIPT_URL);
+        showToast('Webhook cleared. Using local records.');
+        document.getElementById('endpointStatusText').innerHTML = 'Local storage backup is active.';
+        return;
+      }
+      localStorage.setItem(STORAGE_KEY_APPS_SCRIPT_URL, url);
+      showToast('Google Apps Script URL saved successfully!');
+      document.getElementById('endpointStatusText').innerHTML = `<span class="text-emerald-400 font-semibold">● Active Webhook:</span> Submissions will auto-forward to your Google Sheet.`;
+    }
+
+    function openPosterModal() {
+      document.getElementById('posterModal').classList.remove('hidden');
+    }
+
+    function closePosterModal(e) {
+      if (e.target.tagName !== 'IMG') {
+        document.getElementById('posterModal').classList.add('hidden');
+      }
+    }
+
+    async function handleFormSubmit(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('studentName').value.trim();
+      const section = document.getElementById('studentSection').value.trim() || 'N/A';
+      const phone = document.getElementById('contactNumber').value.trim() || 'N/A';
+      
+      const attendanceEl = document.querySelector('input[name="attendance"]:checked');
+      const attending = attendanceEl ? attendanceEl.value : 'Yes';
+
+      const monthEl = document.querySelector('input[name="preferredMonth"]:checked');
+      const month = monthEl ? monthEl.value : 'December 2026';
+
+      const suggestions = document.getElementById('suggestions').value.trim() || 'None';
+
+      if (!name) {
+        showToast('Please provide your name', 'error');
+        return;
+      }
+
+      const submitBtn = document.getElementById('submitBtn');
+      const btnText = document.getElementById('btnText');
+      const btnIcon = document.getElementById('btnIcon');
+      const btnSpinner = document.getElementById('btnSpinner');
+
+      btnText.textContent = 'Recording RSVP...';
+      btnIcon.classList.add('hidden');
+      btnSpinner.classList.remove('hidden');
+      submitBtn.disabled = true;
+
+      const token = 'FW26-' + Math.floor(1000 + Math.random() * 9000);
+      const timestamp = new Date().toLocaleString();
+
+      const newRecord = {
+        token,
+        timestamp,
+        name,
+        section,
+        phone,
+        attending,
+        month,
+        suggestions
+      };
+
+      responses.unshift(newRecord);
+      saveResponsesToStorage();
+      renderAdminDashboard();
+
+      const scriptUrl = localStorage.getItem(STORAGE_KEY_APPS_SCRIPT_URL);
+      if (scriptUrl) {
+        try {
+          await fetch(scriptUrl, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newRecord)
+          });
+        } catch (postErr) {
+          console.warn('Network sync notice:', postErr);
+        }
+      }
+
+      setTimeout(() => {
+        btnText.textContent = 'Confirm My Farewell RSVP';
+        btnIcon.classList.remove('hidden');
+        btnSpinner.classList.add('hidden');
+        submitBtn.disabled = false;
+
+        triggerCelebrationConfetti();
+        displayThankYouScreen(newRecord);
+      }, 550);
+    }
+
+    function displayThankYouScreen(record) {
+      document.getElementById('confStudentName').textContent = record.name;
+      document.getElementById('ticketToken').textContent = '#' + record.token;
+      document.getElementById('ticketName').textContent = record.name;
+      document.getElementById('ticketSection').textContent = 'Class 10 • Section: ' + record.section;
+      
+      const statusEl = document.getElementById('ticketStatus');
+      if (record.attending === 'Yes') {
+        statusEl.textContent = 'Attending: Yes 🎉';
+        statusEl.className = 'font-bold text-emerald-400 block';
+      } else if (record.attending === 'Maybe') {
+        statusEl.textContent = 'Attending: Tentative 🤔';
+        statusEl.className = 'font-bold text-amber-300 block';
+      } else {
+        statusEl.textContent = "Attending: Can't attend 😢";
+        statusEl.className = 'font-bold text-rose-400 block';
+      }
+
+      document.getElementById('ticketMonth').textContent = 'Voted: ' + record.month;
+      document.getElementById('ticketTimestamp').textContent = record.timestamp;
+
+      document.getElementById('registrationView').classList.add('hidden');
+      document.getElementById('thankYouView').classList.remove('hidden');
+      window.scrollTo({ top: 120, behavior: 'smooth' });
+    }
+
+    function resetToSubmitNew() {
+      document.getElementById('farewellForm').reset();
+      document.getElementById('thankYouView').classList.add('hidden');
+      document.getElementById('adminView').classList.add('hidden');
+      document.getElementById('registrationView').classList.remove('hidden');
+      window.scrollTo({ top: 100, behavior: 'smooth' });
+    }
+
+    function toggleAdminView() {
+      const adminView = document.getElementById('adminView');
+      const regView = document.getElementById('registrationView');
+      const thankView = document.getElementById('thankYouView');
+
+      if (!isAdminUnlocked) {
+        openPasswordModal();
+        return;
+      }
+
+      if (adminView.classList.contains('hidden')) {
+        adminView.classList.remove('hidden');
+        regView.classList.add('hidden');
+        thankView.classList.add('hidden');
+        renderAdminDashboard();
+        window.scrollTo({ top: 80, behavior: 'smooth' });
+      } else {
+        adminView.classList.add('hidden');
+        regView.classList.remove('hidden');
+      }
+    }
+
+    function openPasswordModal() {
+      document.getElementById('adminPasswordInput').value = '';
+      document.getElementById('passwordError').classList.add('hidden');
+      document.getElementById('passwordModal').classList.remove('hidden');
+      setTimeout(() => document.getElementById('adminPasswordInput').focus(), 100);
+    }
+
+    function closePasswordModal() {
+      document.getElementById('passwordModal').classList.add('hidden');
+    }
+
+    function verifyAdminPassword(e) {
+      e.preventDefault();
+      const input = document.getElementById('adminPasswordInput').value;
+      if (btoa(input) === SECURE_ADMIN_HASH) {
+        isAdminUnlocked = true;
+        closePasswordModal();
+        showToast('Admin dashboard unlocked', 'success');
+        toggleAdminView();
+      } else {
+        document.getElementById('passwordError').classList.remove('hidden');
+      }
+    }
+
+    function renderAdminDashboard() {
+      const total = responses.length;
+      const yesCount = responses.filter(r => r.attending === 'Yes').length;
+      const maybeCount = responses.filter(r => r.attending === 'Maybe').length;
+      const noCount = responses.filter(r => r.attending === 'No').length;
+
+      document.getElementById('statTotal').textContent = total;
+      document.getElementById('statYes').textContent = yesCount;
+      document.getElementById('statMaybe').textContent = maybeCount;
+      document.getElementById('statNo').textContent = noCount;
+
+      const calcPct = (count) => total > 0 ? Math.round((count / total) * 100) : 0;
+      document.getElementById('statYesPct').textContent = `${calcPct(yesCount)}% of total`;
+      document.getElementById('statMaybePct').textContent = `${calcPct(maybeCount)}% of total`;
+      document.getElementById('statNoPct').textContent = `${calcPct(noCount)}% of total`;
+
+      renderMonthPollBars(total);
+      renderTableRows(responses);
+    }
+
+    function renderMonthPollBars(total) {
+      const months = ['December 2026', 'January 2027', 'February 2027'];
+      const counts = {
+        'December 2026': responses.filter(r => r.month === 'December 2026').length,
+        'January 2027': responses.filter(r => r.month === 'January 2027').length,
+        'February 2027': responses.filter(r => r.month === 'February 2027').length
+      };
+
+      const container = document.getElementById('monthVoteBars');
+      container.innerHTML = months.map(month => {
+        const c = counts[month] || 0;
+        const pct = total > 0 ? Math.round((c / total) * 100) : 0;
+        return `
+          <div>
+            <div class="flex justify-between text-xs mb-1">
+              <span class="text-white font-medium">${month}</span>
+              <span class="text-luxury-gold font-mono">${c} votes (${pct}%)</span>
+            </div>
+            <div class="w-full bg-luxury-black rounded-full h-2.5 overflow-hidden border border-luxury-border/60">
+              <div class="gold-gradient-bg h-2.5 rounded-full transition-all duration-500" style="width: ${pct}%"></div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function renderTableRows(data) {
+      const tbody = document.getElementById('responseTableBody');
+      const counter = document.getElementById('tableRecordCount');
+
+      if (!data || data.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="8" class="text-center py-6 text-gray-500">No student responses found</td></tr>`;
+        counter.textContent = 'Showing 0 entries';
+        return;
+      }
+
+      counter.textContent = `Showing ${data.length} student entries`;
+
+      tbody.innerHTML = data.map((item, index) => {
+        let badge = '';
+        if (item.attending === 'Yes') badge = `<span class="px-2 py-0.5 rounded-full bg-emerald-950/70 border border-emerald-500/40 text-emerald-300 font-semibold text-[10px]">Yes 🎉</span>`;
+        else if (item.attending === 'Maybe') badge = `<span class="px-2 py-0.5 rounded-full bg-amber-950/70 border border-amber-500/40 text-amber-300 font-semibold text-[10px]">Maybe 🤔</span>`;
+        else badge = `<span class="px-2 py-0.5 rounded-full bg-rose-950/70 border border-rose-500/40 text-rose-300 font-semibold text-[10px]">No 😢</span>`;
+
+        return `
+          <tr class="hover:bg-luxury-surface/50 transition">
+            <td class="py-2.5 px-3 text-gray-400 font-mono text-[10px]">${item.timestamp}</td>
+            <td class="py-2.5 px-3 font-semibold text-white">${escapeHtml(item.name)}</td>
+            <td class="py-2.5 px-3 text-gray-300">${escapeHtml(item.section)}</td>
+            <td class="py-2.5 px-3 text-gray-300 font-mono">${escapeHtml(item.phone)}</td>
+            <td class="py-2.5 px-3">${badge}</td>
+            <td class="py-2.5 px-3 text-luxury-goldLight">${escapeHtml(item.month)}</td>
+            <td class="py-2.5 px-3 text-gray-400 max-w-xs truncate" title="${escapeHtml(item.suggestions)}">${escapeHtml(item.suggestions)}</td>
+            <td class="py-2.5 px-3 text-right">
+              <button onclick="deleteResponse(${index})" class="text-gray-500 hover:text-rose-400 text-xs px-1.5 py-0.5" title="Remove Entry">
+                <i class="fa-regular fa-trash-can"></i>
+              </button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function filterTable() {
+      const q = document.getElementById('adminSearchInput').value.toLowerCase().trim();
+      if (!q) {
+        renderTableRows(responses);
+        return;
+      }
+      const filtered = responses.filter(r => 
+        (r.name && r.name.toLowerCase().includes(q)) ||
+        (r.section && r.section.toLowerCase().includes(q)) ||
+        (r.phone && r.phone.toLowerCase().includes(q)) ||
+        (r.month && r.month.toLowerCase().includes(q)) ||
+        (r.suggestions && r.suggestions.toLowerCase().includes(q))
+      );
+      renderTableRows(filtered);
+    }
+
+    function deleteResponse(index) {
+      if (confirm('Are you sure you want to remove this response?')) {
+        responses.splice(index, 1);
+        saveResponsesToStorage();
+        renderAdminDashboard();
+        showToast('Entry removed');
+      }
+    }
+
+    function clearAllDataPrompt() {
+      if (confirm('Are you sure you want to reset all test response data?')) {
+        responses = [];
+        saveResponsesToStorage();
+        renderAdminDashboard();
+        showToast('All response records cleared');
+      }
+    }
+
+    function exportToCSV() {
+      if (!responses || responses.length === 0) {
+        showToast('No entries to export', 'error');
+        return;
+      }
+
+      const headers = ["Token", "Timestamp", "Full Name", "Section", "Contact", "Attending", "Preferred Month", "Wishes/Notes"];
+      const rows = responses.map(r => [
+        `"${r.token || ''}"`,
+        `"${r.timestamp || ''}"`,
+        `"${(r.name || '').replace(/"/g, '""')}"`,
+        `"${(r.section || '').replace(/"/g, '""')}"`,
+        `"${(r.phone || '').replace(/"/g, '""')}"`,
+        `"${(r.attending || '').replace(/"/g, '""')}"`,
+        `"${(r.month || '').replace(/"/g, '""')}"`,
+        `"${(r.suggestions || '').replace(/"/g, '""')}"`
+      ]);
+
+      const csvContent = "data:text/csv;charset=utf-8," + [headers.join(","), ...rows.map(e => e.join(","))].join("\n");
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", `Class10_Farewell_2026_RSVP_Export_${Date.now()}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      showToast('CSV downloaded successfully!');
+    }
+
+    function openIntegrationModal() {
+      document.getElementById('integrationModal').classList.remove('hidden');
+    }
+
+    function closeIntegrationModal() {
+      document.getElementById('integrationModal').classList.add('hidden');
+    }
+
+    function copyAppsScriptCode() {
+      const code = document.getElementById('appsScriptCode').innerText;
+      const tempTextArea = document.createElement('textarea');
+      tempTextArea.value = code;
+      document.body.appendChild(tempTextArea);
+      tempTextArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempTextArea);
+      showToast('Google Apps Script copied to clipboard!');
+    }
+
+    function triggerCelebrationConfetti() {
+      if (typeof confetti === 'function') {
+        confetti({
+          particleCount: 85,
+          spread: 75,
+          origin: { y: 0.6 },
+          colors: ['#E5B842', '#FFE38A', '#FCEFD8', '#997316']
+        });
+      }
+    }
+
+    function showToast(msg, type = 'success') {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toastMsg');
+      const toastIcon = document.getElementById('toastIcon');
+
+      toastMsg.textContent = msg;
+      if (type === 'error') {
+        toastIcon.className = 'fa-solid fa-circle-exclamation text-rose-400';
+      } else {
+        toastIcon.className = 'fa-solid fa-circle-check text-luxury-gold';
+      }
+
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      setTimeout(() => {
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 3200);
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function initAmbientCanvas() {
+      const canvas = document.getElementById('goldCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let particles = [];
+      let width, height;
+
+      function resize() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      for (let i = 0; i < 35; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          radius: Math.random() * 2 + 0.6,
+          speedY: Math.random() * 0.35 + 0.1,
+          speedX: (Math.random() - 0.5) * 0.2,
+          alpha: Math.random() * 0.6 + 0.2
+        });
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+        particles.forEach(p => {
+          p.y -= p.speedY;
+          p.x += p.speedX;
+          if (p.y < 0) {
+            p.y = height + 5;
+            p.x = Math.random() * width;
+          }
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(229, 184, 66, ${p.alpha})`;
+          ctx.fill();
+        });
+        requestAnimationFrame(animate);
+      }
+      animate();
+    }
+  </script>
+</body>
+</html>
